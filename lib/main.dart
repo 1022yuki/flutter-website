@@ -164,6 +164,7 @@ class BodyWidget extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(/*角の丸み*/20),
                       ),
+                      elevation: 2,
                       child: Container(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -173,7 +174,7 @@ class BodyWidget extends StatelessWidget {
                               size: 100,
                               color: Colors.indigo,
                             ),
-                            Text("開発(Django, FastAPI, Flutter)"),
+                            Text("アプリ開発(Django, FastAPI, Flutter)"),
                             Text(
                               'Development of Applications',
                               style: TextStyle(
@@ -191,6 +192,7 @@ class BodyWidget extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(/*角の丸み*/20),
                       ),
+                      elevation: 2,
                       child: Container(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -250,6 +252,7 @@ class BodyWidget extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(/*角の丸み*/20),
                       ),
+                      elevation: 2,
                       child: Container(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -277,6 +280,7 @@ class BodyWidget extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(/*角の丸み*/20),
                       ),
+                      elevation: 2,
                       child: Container(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -304,6 +308,7 @@ class BodyWidget extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(/*角の丸み*/20),
                       ),
+                      elevation: 2,
                       child: Container(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
