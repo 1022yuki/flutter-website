@@ -43,13 +43,13 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search),
-            color: Colors.black87,
-            onPressed: (){},
-          ),
-        ],
+        // actions: <Widget>[
+        //   IconButton(
+        //     icon: Icon(Icons.search),
+        //     color: Colors.black87,
+        //     onPressed: (){},
+        //   ),
+        // ],
       ), 
       body: BodyWidget(urlLaunchWithStringButton: _urlLaunchWithStringButton),
     );
@@ -330,6 +330,186 @@ class BodyWidget extends StatelessWidget {
                         ),
                         width: 250,
                       ),
+                    ),
+                  ],
+                  shrinkWrap: true,
+                ),
+              ),
+            ),
+            Center(
+              child: Text("\n"),
+            ),
+            Center(
+              child: Text(
+                '制作物',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            Center(
+              child: Text(
+                'Products',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.grey,
+                ),
+              ),
+            ),
+            Center(
+              child: SizedBox(
+                height: 200,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(/*角の丸み*/20),
+                      ),
+                      elevation: 2,
+                      child: Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/img/thissite.png',
+                              width: 100,
+                              height: 100,
+                            ),
+                            Text("My Profile"),
+                            Text(
+                              '個人開発',
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: Colors.grey,
+                              ),
+                            ),
+                            Text(
+                              '自分について知ってもらうためのwebサイト(本サイト)',
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Text(
+                              '公開中',
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: Colors.green,
+                              ),
+                            ),
+                          ]
+                        ),
+                        width: 250,
+                      ),
+                      color: Colors.white,
+                    ),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(/*角の丸み*/20),
+                      ),
+                      elevation: 2,
+                      child: Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/img/icon_blue.jpg',
+                              width: 100,
+                              height: 100,
+                            ),
+                            Text("Kudos"),
+                            Text(
+                              '個人開発',
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: Colors.grey,
+                              ),
+                            ),
+                            Text(
+                              'アメリカ、カナダのZ世代で爆発的に流行しているネイティブアプリGasの日本語版を開発中',
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Text(
+                              '開発中(Coming soon)',
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: Colors.orange,
+                              ),
+                            ),
+                          ]
+                        ),
+                        width: 250,
+                      ),
+                      color: Colors.white,
+                    ),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(/*角の丸み*/20),
+                      ),
+                      elevation: 2,
+                      child: Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/img/ochiba.png',
+                              width: 100,
+                              height: 100,
+                            ),
+                            Text("Ochiba"),
+                            Text(
+                              'チーム開発(3人)',
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: Colors.grey,
+                              ),
+                            ),
+                            Text(
+                              'ブックマークを投稿し共有するWebアプリ',
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Text(
+                              '停止中',
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: Colors.red,
+                              ),
+                            ),
+                          ]
+                        ),
+                        width: 250,
+                      ),
+                      color: Colors.white,
+                    ),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(/*角の丸み*/20),
+                      ),
+                      elevation: 2,
+                      child: Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'And more...',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ]
+                        ),
+                        width: 250,
+                      ),
+                      color: Colors.white,
                     ),
                   ],
                   shrinkWrap: true,

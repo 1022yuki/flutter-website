@@ -9887,12 +9887,13 @@ _.as=m
 _.at=n
 _.ax=o},
 GT:function GT(){},
-zi(a,b,c){return new A.zh(b,c,a,null)},
-zh:function zh(a,b,c,d){var _=this
+zi(a,b,c,d){return new A.zh(b,c,d,a,null)},
+zh:function zh(a,b,c,d,e){var _=this
 _.c=a
-_.r=b
-_.Q=c
-_.a=d},
+_.f=b
+_.r=c
+_.Q=d
+_.a=e},
 a3J:function a3J(a,b,c,d,e,f,g,h){var _=this
 _.w=a
 _.a=b
@@ -38419,24 +38420,23 @@ gu(a){var s=this
 return A.Q(s.c,s.a,s.b,s.gcg(s),s.gbS(s),!1,s.w,s.x,s.y,s.z,s.Q,s.as,s.at,s.ax,B.a,B.a,B.a,B.a,B.a,B.a)}}
 A.GT.prototype={}
 A.zh.prototype={
-O(a){var s,r,q,p,o,n,m,l,k=null,j=A.ax(a).y1
+O(a){var s,r,q,p,o,n,m,l,k=this,j=null,i=A.ax(a).y1
 A.ax(a)
-s=new A.a3J(a,B.C,k,k,k,1,B.yq,B.dS)
-r=j.f
+s=new A.a3J(a,B.C,j,j,j,1,B.yq,B.dS)
+r=i.f
 if(r==null){r=s.f
-r.toString}q=this.c
-if(q==null)q=j.b
+r.toString}q=k.c
+if(q==null)q=i.b
 if(q==null)q=s.ga9(s)
-p=j.c
+p=i.c
 if(p==null)p=s.gcO(s)
-o=j.d
+o=i.d
 if(o==null)o=s.d
-n=j.e
-if(n==null){n=s.e
-n.toString}m=this.r
-l=j.a
+n=k.f
+m=k.r
+l=i.a
 if(l==null){l=s.a
-l.toString}return A.cQ(k,A.eE(k,A.ta(B.a4,!0,A.cQ(k,this.Q,!1,k,!1,k,k,k,k,k,k,k,k,k,k,k,k,k,k,k),l,q,n,k,p,m,o,k,B.r9),k,k,r,k,k),!0,k,!1,k,k,k,k,k,k,k,k,k,k,k,k,k,k,k)}}
+l.toString}return A.cQ(j,A.eE(j,A.ta(B.a4,!0,A.cQ(j,k.Q,!1,j,!1,j,j,j,j,j,j,j,j,j,j,j,j,j,j,j),l,q,n,j,p,m,o,j,B.r9),j,j,r,j,j),!0,j,!1,j,j,j,j,j,j,j,j,j,j,j,j,j,j,j)}}
 A.a3J.prototype={
 ga9(a){return A.ax(this.w).at},
 gcO(a){return A.ax(this.w).k2}}
@@ -60527,18 +60527,18 @@ $0(){},
 $S:0}
 A.z1.prototype={
 O(a8){var s,r,q,p,o,n,m,l,k,j,i=this,h=null,g="\n",f=A.bR(A.P9(A.TV("assets/img/watasi.jpg",100,100)),h,h),e=A.bR(A.bt("Yuki Abe",A.c9(h,h,B.ac,h,h,h,h,h,h,h,h,30,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h),h,h),d=A.bR(A.bt("\u5927\u5b66\u751f\u30a8\u30f3\u30b8\u30cb\u30a2",h,h,h),h,h),c=A.bR(A.bt("University student, Engineer",A.c9(h,h,B.ac,h,h,h,h,h,h,h,h,18,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h),h,h),b=A.bR(A.bt(g,h,h,h),h,h),a=A.bR(A.bt("\u30d7\u30ed\u30d5\u30a3\u30fc\u30eb",A.c9(h,h,B.j,h,h,h,h,h,h,h,h,20,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h),h,h),a0=A.bR(A.bt("Profile",A.c9(h,h,B.ac,h,h,h,h,h,h,h,h,18,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h),h,h),a1=A.bR(A.bt("\u65e9\u7a32\u7530\u5927\u5b66\u57fa\u5e79\u7406\u5de5\u5b66\u90e8\u60c5\u5831\u901a\u4fe1\u5b66\u79d13\u5e74\u3002\u30d7\u30ed\u30b0\u30e9\u30df\u30f3\u30b0\u3092\u3057\u3066\u3044\u307e\u3059\u3002",h,h,h),h,h),a2=A.bR(A.bt("I am a 3rd year student in the Department of Information and Communication, School of Fundamental Science and Engineering, Waseda University. I study Computer Science.",A.c9(h,h,B.ac,h,h,h,h,h,h,h,h,15,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h),h,h),a3=A.bR(A.bt(g,h,h,h),h,h),a4=A.bR(A.bt("\u30b9\u30ad\u30eb",A.c9(h,h,B.j,h,h,h,h,h,h,h,h,20,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h),h,h),a5=A.bR(A.bt("Skills",A.c9(h,h,B.ac,h,h,h,h,h,h,h,h,18,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h),h,h),a6=A.mM(20),a7=t.F
-a6=A.zi(A.eE(h,A.qF(A.a([A.nl(B.yO,B.cu,100),A.bt("\u958b\u767a(Django, FastAPI, Flutter)",h,h,h),A.bt("Development of Applications",A.c9(h,h,B.ac,h,h,h,h,h,h,h,h,15,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h)],a7),B.bA),h,h,h,h,250),B.i,new A.c7(a6,B.p))
+a6=A.zi(A.eE(h,A.qF(A.a([A.nl(B.yO,B.cu,100),A.bt("\u30a2\u30d7\u30ea\u958b\u767a(Django, FastAPI, Flutter)",h,h,h),A.bt("Development of Applications",A.c9(h,h,B.ac,h,h,h,h,h,h,h,h,15,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h)],a7),B.bA),h,h,h,h,250),B.i,2,new A.c7(a6,B.p))
 s=A.mM(20)
-s=A.bR(A.fC(A.ae4(A.a([a6,A.zi(A.eE(h,A.qF(A.a([A.nl(B.yR,B.cu,100),A.bt("\u6a5f\u68b0\u5b66\u7fd2",h,h,h),A.bt("Machine Learning",A.c9(h,h,B.ac,h,h,h,h,h,h,h,h,15,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h)],a7),B.bA),h,h,h,h,250),B.i,new A.c7(s,B.p))],a7),B.W,!0),200,h),h,h)
+s=A.bR(A.fC(A.ae4(A.a([a6,A.zi(A.eE(h,A.qF(A.a([A.nl(B.yR,B.cu,100),A.bt("\u6a5f\u68b0\u5b66\u7fd2",h,h,h),A.bt("Machine Learning",A.c9(h,h,B.ac,h,h,h,h,h,h,h,h,15,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h)],a7),B.bA),h,h,h,h,250),B.i,2,new A.c7(s,B.p))],a7),B.W,!0),200,h),h,h)
 a6=A.bR(A.bt(g,h,h,h),h,h)
 r=A.bR(A.bt("\u8cc7\u683c \u5b9f\u7e3e",A.c9(h,h,B.j,h,h,h,h,h,h,h,h,20,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h),h,h)
 q=A.bR(A.bt("Qualifications Achievements",A.c9(h,h,B.ac,h,h,h,h,h,h,h,h,18,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h),h,h)
 p=A.mM(20)
-p=A.zi(A.eE(h,A.qF(A.a([A.nl(B.yS,B.cu,100),A.bt("\u57fa\u672c\u60c5\u5831\u6280\u8853\u8005",h,h,h),A.bt("Fundamental Information Technology Engineer Examination",A.c9(h,h,B.ac,h,h,h,h,h,h,h,h,15,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h)],a7),B.bA),h,h,h,h,250),B.i,new A.c7(p,B.p))
+p=A.zi(A.eE(h,A.qF(A.a([A.nl(B.yS,B.cu,100),A.bt("\u57fa\u672c\u60c5\u5831\u6280\u8853\u8005",h,h,h),A.bt("Fundamental Information Technology Engineer Examination",A.c9(h,h,B.ac,h,h,h,h,h,h,h,h,15,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h)],a7),B.bA),h,h,h,h,250),B.i,2,new A.c7(p,B.p))
 o=A.mM(20)
-o=A.zi(A.eE(h,A.qF(A.a([A.nl(B.yP,B.cu,100),A.bt("\u30a4\u30f3\u30bf\u30fc\u30f3(2022\u5e748\u6708~)",h,h,h),A.bt("Working as a data scientist",A.c9(h,h,B.ac,h,h,h,h,h,h,h,h,15,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h)],a7),B.bA),h,h,h,h,250),B.i,new A.c7(o,B.p))
+o=A.zi(A.eE(h,A.qF(A.a([A.nl(B.yP,B.cu,100),A.bt("\u30a4\u30f3\u30bf\u30fc\u30f3(2022\u5e748\u6708~)",h,h,h),A.bt("Working as a data scientist",A.c9(h,h,B.ac,h,h,h,h,h,h,h,h,15,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h)],a7),B.bA),h,h,h,h,250),B.i,2,new A.c7(o,B.p))
 n=A.mM(20)
-n=A.bR(A.fC(A.ae4(A.a([p,o,A.zi(A.eE(h,A.qF(A.a([A.nl(B.yN,B.cu,100),A.bt("AtCoder\u7dd1",h,h,h),A.bt("AtCoder rating of 800 or higher",A.c9(h,h,B.ac,h,h,h,h,h,h,h,h,15,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h)],a7),B.bA),h,h,h,h,250),h,new A.c7(n,B.p))],a7),B.W,!0),200,h),h,h)
+n=A.bR(A.fC(A.ae4(A.a([p,o,A.zi(A.eE(h,A.qF(A.a([A.nl(B.yN,B.cu,100),A.bt("AtCoder\u7dd1",h,h,h),A.bt("AtCoder rating of 800 or higher",A.c9(h,h,B.ac,h,h,h,h,h,h,h,h,15,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h)],a7),B.bA),h,h,h,h,250),h,2,new A.c7(n,B.p))],a7),B.W,!0),200,h),h,h)
 o=A.bR(A.bt(g,h,h,h),h,h)
 p=A.bR(A.bt("\u9023\u7d61\u5148",A.c9(h,h,B.j,h,h,h,h,h,h,h,h,20,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h),h,h)
 m=A.bR(A.bt("Contact",A.c9(h,h,B.ac,h,h,h,h,h,h,h,h,18,h,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h),h,h)

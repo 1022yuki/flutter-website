@@ -68,6 +68,10 @@ flutter:
     - assets/img/github.png
     - assets/img/wantedly.png
     - assets/img/watasi.jpg
+    - assets/img/comingsoon.png
+    - assets/img/icon_blue.jpg
+    - assets/img/ochiba.PNG
+    - assets/img/thissite.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
