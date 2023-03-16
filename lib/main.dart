@@ -121,12 +121,14 @@ class BodyWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Center(
-              child: Text("早稲田大学基幹理工学部情報通信学科3年。プログラミングをしています。"),
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal:50),
+                child: Text('　早稲田大学基幹理工学部情報通信学科3年。プログラミングをしています。趣味は旅行、バスケットボール、競技プログラミングです。特に関心のある分野はアプリ開発、データサイエンスです。これらの勉強を通じて革新的なサービスを開発し人々の生活を豊かにしたいと考えています。さまざまなことに積極的に挑戦したいです。'),
             ),
-            Center(
-              child: Text(
-                'I am a 3rd year student in the Department of Information and Communication, School of Fundamental Science and Engineering, Waseda University. I study Computer Science.',
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal:50),
+                child: Text(
+                "　I am a 3rd year student in the Department of Information and Communication, School of Fundamental Science and Engineering, Waseda University. I study Computer Science. My hobbies are traveling, basketball, and competitive programming. My particular areas of interest are app development and data science. Through these studies, I hope to develop innovative services and enrich people's lives. I want to actively challenge myself in a variety of things.",
                 style: TextStyle(
                   fontSize: 15,
                   color: Colors.grey,
@@ -489,28 +491,28 @@ class BodyWidget extends StatelessWidget {
                       ),
                       color: Colors.white,
                     ),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(/*角の丸み*/20),
-                      ),
-                      elevation: 2,
-                      child: Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'And more...',
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ]
-                        ),
-                        width: 250,
-                      ),
-                      color: Colors.white,
-                    ),
+                    // Card(
+                    //   shape: RoundedRectangleBorder(
+                    //     borderRadius: BorderRadius.circular(/*角の丸み*/20),
+                    //   ),
+                    //   elevation: 2,
+                    //   child: Container(
+                    //     child: Column(
+                    //       mainAxisAlignment: MainAxisAlignment.center,
+                    //       children: [
+                    //         Text(
+                    //           'And more...',
+                    //           style: TextStyle(
+                    //             fontSize: 20,
+                    //             color: Colors.grey,
+                    //           ),
+                    //         ),
+                    //       ]
+                    //     ),
+                    //     width: 250,
+                    //   ),
+                    //   color: Colors.white,
+                    // ),
                   ],
                   shrinkWrap: true,
                 ),
