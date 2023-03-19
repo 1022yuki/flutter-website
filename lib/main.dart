@@ -250,34 +250,34 @@ class BodyWidget extends StatelessWidget {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(/*角の丸み*/20),
-                      ),
-                      elevation: 2,
-                      child: Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.school,
-                              size: 100,
-                              color: Colors.indigo,
-                            ),
-                            Text("基本情報技術者"),
-                            Text(
-                              'Fundamental Information Technology Engineer Examination',
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ]
-                        ),
-                        width: 250,
-                      ),
-                      color: Colors.white,
-                    ),
+                    // Card(
+                    //   shape: RoundedRectangleBorder(
+                    //     borderRadius: BorderRadius.circular(/*角の丸み*/20),
+                    //   ),
+                    //   elevation: 2,
+                    //   child: Container(
+                    //     child: Column(
+                    //       mainAxisAlignment: MainAxisAlignment.center,
+                    //       children: [
+                    //         Icon(
+                    //           Icons.school,
+                    //           size: 100,
+                    //           color: Colors.indigo,
+                    //         ),
+                    //         Text("基本情報技術者"),
+                    //         Text(
+                    //           'Fundamental Information Technology Engineer Examination',
+                    //           style: TextStyle(
+                    //             fontSize: 15,
+                    //             color: Colors.grey,
+                    //           ),
+                    //         ),
+                    //       ]
+                    //     ),
+                    //     width: 250,
+                    //   ),
+                    //   color: Colors.white,
+                    // ),
                     Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(/*角の丸み*/20),
@@ -609,7 +609,7 @@ class BodyWidget extends StatelessWidget {
                     onPressed: () {
                       _urlLaunchWithStringButton.launchUriWithString(
                         context,
-                        "https://twitter.com/hayaoki_haya",
+                        "https://twitter.com/kabekun_",
                       );
                     },
                   ),
