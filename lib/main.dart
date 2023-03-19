@@ -333,6 +333,10 @@ class BodyWidget extends StatelessWidget {
                         width: 250,
                       ),
                     ),
+                    // ImageCard(
+                    //   imagePath: 'assets/img/thissite.png',
+                    //   child: Text('Hello, World!'),
+                    // ),
                   ],
                   shrinkWrap: true,
                 ),
@@ -459,7 +463,7 @@ class BodyWidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset(
-                              'assets/img/ochiba.png',
+                              'assets/img/ochiba.jpg',
                               width: 100,
                               height: 100,
                             ),
@@ -683,5 +687,46 @@ class UrlLaunchWithStringButton {
       alertSnackBar;
       ScaffoldMessenger.of(context).showSnackBar(alertSnackBar);
     }
+  }
+}
+
+class ImageCard extends StatelessWidget {
+  final String imagePath;
+  final Widget child;
+
+  const ImageCard({
+    Key? key,
+    required this.imagePath,
+    required this.child,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 250,
+
+      child: Card(
+        color: Colors.white,
+        elevation: 4,
+        margin: EdgeInsets.all(8),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(40),
+        ),
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: Image.asset(
+                imagePath,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: child,
+            ),
+          ],
+        ),
+      )
+    );
   }
 }
