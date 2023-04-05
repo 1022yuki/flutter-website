@@ -31,15 +31,21 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.black,
         elevation: .6,
         title: Align(
+          
           alignment: Alignment.centerLeft,
-          child: Text(
-            'My Profile', 
-            style: TextStyle(
-              color: Colors.black87,
-              // fontStyle: FontStyle.italic
+          child: GestureDetector(
+            onTap: () {
+              //タップ処理
+            },
+            child: Text(
+              'My Profile', 
+              style: TextStyle(
+                color: Colors.white,
+                // fontStyle: FontStyle.italic
+              ),
             ),
           ),
         ),
@@ -71,6 +77,19 @@ class BodyWidget extends StatelessWidget {
         Column(
           children: [
             Center(
+              child: Text("\n"),
+            ),
+            Center(
+              child: Text(
+                'Profile',
+                style: TextStyle(
+                  fontSize: 40,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            SizedBox(height: 10,),
+            Center(
               child: ClipOval(
                 child: Image.asset(
                   'assets/img/watasi.jpg',
@@ -83,7 +102,7 @@ class BodyWidget extends StatelessWidget {
               child: Text(
                 'Yuki Abe',
                 style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 40,
                   color: Colors.grey,
                 ),
               ),
@@ -100,62 +119,58 @@ class BodyWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Center(
-              child: Text("\n"),
-            ),
-            Center(
-              child: Text(
-                'プロフィール',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-            Center(
-              child: Text(
-                'Profile',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
+            SizedBox(height: 10,),
+            // Center(
+            //   child: Text(
+            //     'プロフィール',
+            //     style: TextStyle(
+            //       fontSize: 20,
+            //       color: Colors.black,
+            //     ),
+            //   ),
+            // ),
             Padding(
                 padding: EdgeInsets.symmetric(horizontal:50),
-                child: Text('　早稲田大学基幹理工学部情報通信学科3年。プログラミングをしています。趣味は旅行、バスケットボール、競技プログラミングです。特に関心のある分野はアプリ開発、データサイエンスです。これらの勉強を通じて革新的なサービスを開発し人々の生活を豊かにしたいと考えています。さまざまなことに積極的に挑戦したいです。'),
+                child: Text(
+                  '　早稲田大学基幹理工学部情報通信学科3年。プログラミングをしています。趣味は旅行、バスケットボール、競技プログラミングです。特に関心のある分野はアプリ開発、データサイエンスです。これらの勉強を通じて革新的なサービスを開発し人々の生活を豊かにしたいと考えています。さまざまなことに積極的に挑戦したいです。',
+                  style: TextStyle(
+                  fontSize: 16,
+                  // color: Colors.grey,
+                ),
+                ),
             ),
             Padding(
                 padding: EdgeInsets.symmetric(horizontal:50),
                 child: Text(
                 "　I am a 3rd year student in the Department of Information and Communication, School of Fundamental Science and Engineering, Waseda University. I study Computer Science. My hobbies are traveling, basketball, and competitive programming. My particular areas of interest are app development and data science. Through these studies, I hope to develop innovative services and enrich people's lives. I want to actively challenge myself in a variety of things.",
                 style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.grey,
+                  fontSize: 16,
+                  color: Color.fromARGB(255, 150, 145, 145),
                 ),
               ),
             ),
             Center(
               child: Text("\n"),
             ),
-            Center(
-              child: Text(
-                'スキル',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                ),
-              ),
-            ),
+            // Center(
+            //   child: Text(
+            //     'スキル',
+            //     style: TextStyle(
+            //       fontSize: 20,
+            //       color: Colors.black,
+            //     ),
+            //   ),
+            // ),
             Center(
               child: Text(
                 'Skills',
                 style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.grey,
+                  fontSize: 40,
+                  color: Colors.black,
                 ),
               ),
             ),
+            SizedBox(height: 10,),
             Center(
               child: SizedBox(
                 height: 200,
@@ -171,10 +186,26 @@ class BodyWidget extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.devices,
-                              size: 100,
-                              color: Colors.indigo,
+                            ShaderMask(
+                              child: Icon(
+                                Icons.devices,
+                                size: 100,
+                                color: Colors.white,
+                              ),
+                              shaderCallback: (Rect rect) {
+                                return LinearGradient(
+                                  begin: FractionalOffset.bottomLeft,
+                                  end: FractionalOffset.topRight,
+                                  colors: [
+                                    Colors.purple,
+                                    Colors.deepPurple,
+                                  ],
+                                  stops: const [
+                                    0.0,
+                                    1.0,
+                                  ],
+                                ).createShader(rect);
+                              },
                             ),
                             Text("アプリ開発(Django, FastAPI, Flutter)"),
                             Text(
@@ -199,10 +230,26 @@ class BodyWidget extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.psychology,
-                              size: 100,
-                              color: Colors.indigo,
+                            ShaderMask(
+                              child: Icon(
+                                Icons.psychology,
+                                size: 100,
+                                color: Colors.white,
+                              ),
+                              shaderCallback: (Rect rect) {
+                                return LinearGradient(
+                                  begin: FractionalOffset.bottomLeft,
+                                  end: FractionalOffset.topRight,
+                                  colors: [
+                                    Colors.purple,
+                                    Colors.deepPurple,
+                                  ],
+                                  stops: const [
+                                    0.0,
+                                    1.0,
+                                  ],
+                                ).createShader(rect);
+                              },
                             ),
                             Text("機械学習"),
                             Text(
@@ -226,24 +273,25 @@ class BodyWidget extends StatelessWidget {
             Center(
               child: Text("\n"),
             ),
-            Center(
-              child: Text(
-                '資格 実績',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                ),
-              ),
-            ),
+            // Center(
+            //   child: Text(
+            //     '資格 実績',
+            //     style: TextStyle(
+            //       fontSize: 20,
+            //       color: Colors.black,
+            //     ),
+            //   ),
+            // ),
             Center(
               child: Text(
                 'Qualifications Achievements',
                 style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.grey,
+                  fontSize: 40,
+                  color: Colors.black,
                 ),
               ),
             ),
+            SizedBox(height: 10,),
             Center(
               child: SizedBox(
                 height: 200,
@@ -287,10 +335,26 @@ class BodyWidget extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.domain,
-                              size: 100,
-                              color: Colors.indigo,
+                            ShaderMask(
+                              child: Icon(
+                                Icons.domain,
+                                size: 100,
+                                color: Colors.white,
+                              ),
+                              shaderCallback: (Rect rect) {
+                                return LinearGradient(
+                                  begin: FractionalOffset.bottomLeft,
+                                  end: FractionalOffset.topRight,
+                                  colors: [
+                                    Colors.purple,
+                                    Colors.deepPurple,
+                                  ],
+                                  stops: const [
+                                    0.0,
+                                    1.0,
+                                  ],
+                                ).createShader(rect);
+                              },
                             ),
                             Text("インターン(2022年8月~)"),
                             Text(
@@ -315,10 +379,26 @@ class BodyWidget extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.computer,
-                              size: 100,
-                              color: Colors.indigo,
+                            ShaderMask(
+                              child: Icon(
+                                Icons.computer,
+                                size: 100,
+                                color: Colors.white,
+                              ),
+                              shaderCallback: (Rect rect) {
+                                return LinearGradient(
+                                  begin: FractionalOffset.bottomLeft,
+                                  end: FractionalOffset.topRight,
+                                  colors: [
+                                    Colors.purple,
+                                    Colors.deepPurple,
+                                  ],
+                                  stops: const [
+                                    0.0,
+                                    1.0,
+                                  ],
+                                ).createShader(rect);
+                              },
                             ),
                             Text("AtCoder緑"),
                             Text(
@@ -345,24 +425,25 @@ class BodyWidget extends StatelessWidget {
             Center(
               child: Text("\n"),
             ),
-            Center(
-              child: Text(
-                '制作物',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                ),
-              ),
-            ),
+            // Center(
+            //   child: Text(
+            //     '制作物',
+            //     style: TextStyle(
+            //       fontSize: 20,
+            //       color: Colors.black,
+            //     ),
+            //   ),
+            // ),
             Center(
               child: Text(
                 'Products',
                 style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.grey,
+                  fontSize: 40,
+                  color: Colors.black,
                 ),
               ),
             ),
+            SizedBox(height: 10,),
             Center(
               child: SizedBox(
                 height: 200,
@@ -379,9 +460,9 @@ class BodyWidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset(
-                              'assets/img/thissite.png',
-                              width: 100,
-                              height: 100,
+                              'assets/img/pc_prof_site.png',
+                              width: 120,
+                              height: 120,
                             ),
                             Text("My Profile"),
                             Text(
@@ -421,7 +502,7 @@ class BodyWidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset(
-                              'assets/img/icon_blue.jpg',
+                              'assets/img/sp_kudos.png',
                               width: 100,
                               height: 100,
                             ),
@@ -463,9 +544,9 @@ class BodyWidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset(
-                              'assets/img/ochiba.jpg',
-                              width: 100,
-                              height: 100,
+                              'assets/img/pc_ochiba.png',
+                              width: 120,
+                              height: 120,
                             ),
                             Text("Ochiba"),
                             Text(
@@ -525,24 +606,25 @@ class BodyWidget extends StatelessWidget {
             Center(
               child: Text("\n"),
             ),
-            Center(
-              child: Text(
-                '連絡先',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                ),
-              ),
-            ),
+            // Center(
+            //   child: Text(
+            //     '連絡先',
+            //     style: TextStyle(
+            //       fontSize: 20,
+            //       color: Colors.black,
+            //     ),
+            //   ),
+            // ),
             Center(
               child: Text(
                 'Contact',
                 style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.grey,
+                  fontSize: 40,
+                  color: Colors.black,
                 ),
               ),
             ),
+            SizedBox(height: 10,),
             Center(
               child: RichText(
                 text: TextSpan(
@@ -570,24 +652,25 @@ class BodyWidget extends StatelessWidget {
             Center(
               child: Text("\n"),
             ),
+            // Center(
+            //   child: Text(
+            //     'SNS',
+            //     style: TextStyle(
+            //       fontSize: 20,
+            //       color: Colors.black,
+            //     ),
+            //   ),
+            // ),
             Center(
               child: Text(
                 'SNS',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 40,
                   color: Colors.black,
                 ),
               ),
             ),
-            Center(
-              child: Text(
-                'SNS',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
+            SizedBox(height: 10,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -665,6 +748,19 @@ class BodyWidget extends StatelessWidget {
             Center(
               child: Text("\n"),
             ),
+            Container(
+              alignment: Alignment.center,
+              width: double.infinity,
+              height: 100,
+              decoration: BoxDecoration(color: Colors.black),
+              child: Text(
+                "Copyright © 2023- Yuki Abe. All Rights Reserved.",
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Colors.white,
+                ),
+              ),
+            )
           ],
         ),
     );

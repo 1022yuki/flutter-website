@@ -74,6 +74,9 @@ flutter:
     - assets/img/ochiba.png
     - assets/img/ochiba.jpg
     - assets/img/thissite.png
+    - assets/img/pc_ochiba.png
+    - assets/img/pc_prof_site.png
+    - assets/img/sp_kudos.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
