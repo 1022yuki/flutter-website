@@ -30,32 +30,35 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        elevation: .6,
-        title: Align(
-          
-          alignment: Alignment.centerLeft,
-          child: GestureDetector(
-            onTap: () {
-              //タップ処理
-            },
-            child: Text(
-              'My Profile', 
-              style: TextStyle(
-                color: Colors.white,
-                // fontStyle: FontStyle.italic
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60.0),
+        child: AppBar(
+          backgroundColor: Colors.black,
+          elevation: .6,
+          title: Align(
+            alignment: Alignment.centerLeft,
+            child: GestureDetector(
+              onTap: () {
+                //タップ処理
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
+              },
+              child: Text(
+                'My Profile', 
+                style: TextStyle(
+                  color: Colors.white,
+                  // fontStyle: FontStyle.italic
+                ),
               ),
             ),
           ),
+          // actions: <Widget>[
+          //   IconButton(
+          //     icon: Icon(Icons.search),
+          //     color: Colors.black87,
+          //     onPressed: (){},
+          //   ),
+          // ],
         ),
-        // actions: <Widget>[
-        //   IconButton(
-        //     icon: Icon(Icons.search),
-        //     color: Colors.black87,
-        //     onPressed: (){},
-        //   ),
-        // ],
       ), 
       body: BodyWidget(urlLaunchWithStringButton: _urlLaunchWithStringButton),
     );
@@ -76,6 +79,24 @@ class BodyWidget extends StatelessWidget {
       child: 
         Column(
           children: [
+            Container(
+              height: MediaQuery.of(context).size.height-60,
+              width: double.infinity,
+              alignment: Alignment.center,
+              // decoration: BoxDecoration(color: Colors.brown), // 追加
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/img/kane_ss.png'),
+                  fit: BoxFit.cover,
+              )),
+              child: Text(
+                'Welcome to my Website!!',
+                style: TextStyle(
+                  fontSize: 40,
+                  color: Colors.white,
+                ),
+              ),
+            ),
             Center(
               child: Text("\n"),
             ),
@@ -148,6 +169,9 @@ class BodyWidget extends StatelessWidget {
                   color: Color.fromARGB(255, 150, 145, 145),
                 ),
               ),
+            ),
+            Center(
+              child: Text("\n"),
             ),
             Center(
               child: Text("\n"),
@@ -269,6 +293,9 @@ class BodyWidget extends StatelessWidget {
                   shrinkWrap: true,
                 ),
               ),
+            ),
+            Center(
+              child: Text("\n"),
             ),
             Center(
               child: Text("\n"),
@@ -421,6 +448,9 @@ class BodyWidget extends StatelessWidget {
                   shrinkWrap: true,
                 ),
               ),
+            ),
+            Center(
+              child: Text("\n"),
             ),
             Center(
               child: Text("\n"),
@@ -606,6 +636,9 @@ class BodyWidget extends StatelessWidget {
             Center(
               child: Text("\n"),
             ),
+            Center(
+              child: Text("\n"),
+            ),
             // Center(
             //   child: Text(
             //     '連絡先',
@@ -648,6 +681,9 @@ class BodyWidget extends StatelessWidget {
                   ]
                 )
               )
+            ),
+            Center(
+              child: Text("\n"),
             ),
             Center(
               child: Text("\n"),
