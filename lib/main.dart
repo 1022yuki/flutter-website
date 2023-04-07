@@ -27,6 +27,8 @@ class PortfolioApp extends StatelessWidget {
 // C. 画面に表示する内容！
 class HomePage extends StatelessWidget {
   final _urlLaunchWithStringButton = UrlLaunchWithStringButton();
+  final ScrollController _scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,8 +41,25 @@ class HomePage extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: GestureDetector(
               onTap: () {
-                //タップ処理
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
+                Navigator.of(context).pushReplacement(
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) {
+                      return HomePage();
+                    },
+                    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                      final Offset begin = Offset(0.0, 0.0); // 下から上
+                      // final Offset begin = Offset(0.0, -1.0); // 上から下
+                      final Offset end = Offset.zero;
+                      final Animatable<Offset> tween = Tween(begin: begin, end: end)
+                          .chain(CurveTween(curve: Curves.easeInOut));
+                      final Animation<Offset> offsetAnimation = animation.drive(tween);
+                      return SlideTransition(
+                        position: offsetAnimation,
+                        child: child,
+                      );
+                    },
+                  ),
+                );
               },
               child: Text(
                 'My Profile', 
