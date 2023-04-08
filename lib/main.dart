@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -19,6 +21,9 @@ class PortfolioApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'yuki-abe',
+      theme: ThemeData(
+        primarySwatch: primaryBlack,
+      ),
       home: HomePage(),
     );
   }
@@ -84,8 +89,8 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class BodyWidget extends StatelessWidget {
-  const BodyWidget({
+class BodyWidget extends StatefulWidget {
+  BodyWidget({
     super.key,
     required UrlLaunchWithStringButton urlLaunchWithStringButton,
   }) : _urlLaunchWithStringButton = urlLaunchWithStringButton;
@@ -93,7 +98,22 @@ class BodyWidget extends StatelessWidget {
   final UrlLaunchWithStringButton _urlLaunchWithStringButton;
 
   @override
+  State<BodyWidget> createState() => _BodyWidgetState();
+  double? _deviceWidth;
+}
+
+class _BodyWidgetState extends State<BodyWidget> {
+  double? _deviceWidth;
+  late bool isWide;
+
+  @override
   Widget build(BuildContext context) {
+    _deviceWidth = MediaQuery.of(context).size.width;
+    if (_deviceWidth! > 600){
+      isWide = true;
+    } else {
+      isWide = false;
+    }
     return SingleChildScrollView(
       child: 
         Column(
@@ -160,15 +180,6 @@ class BodyWidget extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10,),
-            // Center(
-            //   child: Text(
-            //     'プロフィール',
-            //     style: TextStyle(
-            //       fontSize: 20,
-            //       color: Colors.black,
-            //     ),
-            //   ),
-            // ),
             Padding(
                 padding: EdgeInsets.symmetric(horizontal:50),
                 child: Text(
@@ -195,15 +206,6 @@ class BodyWidget extends StatelessWidget {
             Center(
               child: Text("\n"),
             ),
-            // Center(
-            //   child: Text(
-            //     'スキル',
-            //     style: TextStyle(
-            //       fontSize: 20,
-            //       color: Colors.black,
-            //     ),
-            //   ),
-            // ),
             Center(
               child: Text(
                 'Skills',
@@ -215,103 +217,25 @@ class BodyWidget extends StatelessWidget {
             ),
             SizedBox(height: 10,),
             Center(
-              child: SizedBox(
+              child: isWide? SizedBox(
                 height: 200,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(/*角の丸み*/20),
-                      ),
-                      elevation: 2,
-                      child: Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ShaderMask(
-                              child: Icon(
-                                Icons.devices,
-                                size: 100,
-                                color: Colors.white,
-                              ),
-                              shaderCallback: (Rect rect) {
-                                return LinearGradient(
-                                  begin: FractionalOffset.bottomLeft,
-                                  end: FractionalOffset.topRight,
-                                  colors: [
-                                    Colors.purple,
-                                    Colors.deepPurple,
-                                  ],
-                                  stops: const [
-                                    0.0,
-                                    1.0,
-                                  ],
-                                ).createShader(rect);
-                              },
-                            ),
-                            Text("アプリ開発(Django, FastAPI, Flutter)"),
-                            Text(
-                              'Development of Applications',
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ]
-                        ),
-                        width: 250,
-                      ),
-                      color: Colors.white,
-                    ),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(/*角の丸み*/20),
-                      ),
-                      elevation: 2,
-                      child: Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ShaderMask(
-                              child: Icon(
-                                Icons.psychology,
-                                size: 100,
-                                color: Colors.white,
-                              ),
-                              shaderCallback: (Rect rect) {
-                                return LinearGradient(
-                                  begin: FractionalOffset.bottomLeft,
-                                  end: FractionalOffset.topRight,
-                                  colors: [
-                                    Colors.purple,
-                                    Colors.deepPurple,
-                                  ],
-                                  stops: const [
-                                    0.0,
-                                    1.0,
-                                  ],
-                                ).createShader(rect);
-                              },
-                            ),
-                            Text("機械学習"),
-                            Text(
-                              'Machine Learning',
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ]
-                        ),
-                        width: 250,
-                      ),
-                      color: Colors.white,
-                    ),
+                    CardDevWidget(),
+                    CardMlWidget(),
                   ],
                   shrinkWrap: true,
                 ),
-              ),
+              ):
+              Column(
+                  children: [
+                    SizedBox(height: 10),
+                    CardDevWidget(),
+                    SizedBox(height: 10),
+                    CardMlWidget(),
+                  ],
+                ),
             ),
             Center(
               child: Text("\n"),
@@ -319,18 +243,9 @@ class BodyWidget extends StatelessWidget {
             Center(
               child: Text("\n"),
             ),
-            // Center(
-            //   child: Text(
-            //     '資格 実績',
-            //     style: TextStyle(
-            //       fontSize: 20,
-            //       color: Colors.black,
-            //     ),
-            //   ),
-            // ),
             Center(
               child: Text(
-                'Qualifications Achievements',
+                'Achievements',
                 style: TextStyle(
                   fontSize: 40,
                   color: Colors.black,
@@ -339,133 +254,24 @@ class BodyWidget extends StatelessWidget {
             ),
             SizedBox(height: 10,),
             Center(
-              child: SizedBox(
+              child: isWide? SizedBox(
                 height: 200,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    // Card(
-                    //   shape: RoundedRectangleBorder(
-                    //     borderRadius: BorderRadius.circular(/*角の丸み*/20),
-                    //   ),
-                    //   elevation: 2,
-                    //   child: Container(
-                    //     child: Column(
-                    //       mainAxisAlignment: MainAxisAlignment.center,
-                    //       children: [
-                    //         Icon(
-                    //           Icons.school,
-                    //           size: 100,
-                    //           color: Colors.indigo,
-                    //         ),
-                    //         Text("基本情報技術者"),
-                    //         Text(
-                    //           'Fundamental Information Technology Engineer Examination',
-                    //           style: TextStyle(
-                    //             fontSize: 15,
-                    //             color: Colors.grey,
-                    //           ),
-                    //         ),
-                    //       ]
-                    //     ),
-                    //     width: 250,
-                    //   ),
-                    //   color: Colors.white,
-                    // ),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(/*角の丸み*/20),
-                      ),
-                      elevation: 2,
-                      child: Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ShaderMask(
-                              child: Icon(
-                                Icons.domain,
-                                size: 100,
-                                color: Colors.white,
-                              ),
-                              shaderCallback: (Rect rect) {
-                                return LinearGradient(
-                                  begin: FractionalOffset.bottomLeft,
-                                  end: FractionalOffset.topRight,
-                                  colors: [
-                                    Colors.purple,
-                                    Colors.deepPurple,
-                                  ],
-                                  stops: const [
-                                    0.0,
-                                    1.0,
-                                  ],
-                                ).createShader(rect);
-                              },
-                            ),
-                            Text("インターン(2022年8月~)"),
-                            Text(
-                              'Working as a data scientist',
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ]
-                        ),
-                        width: 250,
-                      ),
-                      color: Colors.white,
-                    ),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(/*角の丸み*/20),
-                      ),
-                      elevation: 2,
-                      child: Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ShaderMask(
-                              child: Icon(
-                                Icons.computer,
-                                size: 100,
-                                color: Colors.white,
-                              ),
-                              shaderCallback: (Rect rect) {
-                                return LinearGradient(
-                                  begin: FractionalOffset.bottomLeft,
-                                  end: FractionalOffset.topRight,
-                                  colors: [
-                                    Colors.purple,
-                                    Colors.deepPurple,
-                                  ],
-                                  stops: const [
-                                    0.0,
-                                    1.0,
-                                  ],
-                                ).createShader(rect);
-                              },
-                            ),
-                            Text("AtCoder緑"),
-                            Text(
-                              'AtCoder rating of 800 or higher',
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ]
-                        ),
-                        width: 250,
-                      ),
-                    ),
-                    // ImageCard(
-                    //   imagePath: 'assets/img/thissite.png',
-                    //   child: Text('Hello, World!'),
-                    // ),
+                    CardInternWidget(),
+                    CardAtCoderWidget(),
                   ],
                   shrinkWrap: true,
                 ),
+              ):
+              Column(
+                children: [
+                  SizedBox(height: 10),
+                  CardInternWidget(),
+                  SizedBox(height: 10),
+                  CardAtCoderWidget(),
+                ],
               ),
             ),
             Center(
@@ -474,15 +280,6 @@ class BodyWidget extends StatelessWidget {
             Center(
               child: Text("\n"),
             ),
-            // Center(
-            //   child: Text(
-            //     '制作物',
-            //     style: TextStyle(
-            //       fontSize: 20,
-            //       color: Colors.black,
-            //     ),
-            //   ),
-            // ),
             Center(
               child: Text(
                 'Products',
@@ -494,162 +291,27 @@ class BodyWidget extends StatelessWidget {
             ),
             SizedBox(height: 10,),
             Center(
-              child: SizedBox(
+              child: isWide? SizedBox(
                 height: 200,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(/*角の丸み*/20),
-                      ),
-                      elevation: 2,
-                      child: Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              'assets/img/pc_prof_site.png',
-                              width: 120,
-                              height: 120,
-                            ),
-                            Text("My Profile"),
-                            Text(
-                              '個人開発',
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: Colors.grey,
-                              ),
-                            ),
-                            Text(
-                              '自分について知ってもらうためのwebサイト(本サイト)',
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: Colors.black,
-                              ),
-                            ),
-                            Text(
-                              '公開中',
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: Colors.green,
-                              ),
-                            ),
-                          ]
-                        ),
-                        width: 250,
-                      ),
-                      color: Colors.white,
-                    ),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(/*角の丸み*/20),
-                      ),
-                      elevation: 2,
-                      child: Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              'assets/img/sp_kudos.png',
-                              width: 100,
-                              height: 100,
-                            ),
-                            Text("Kudos"),
-                            Text(
-                              '個人開発',
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: Colors.grey,
-                              ),
-                            ),
-                            Text(
-                              'アメリカ、カナダのZ世代で爆発的に流行しているネイティブアプリGasの日本語版を開発中',
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: Colors.black,
-                              ),
-                            ),
-                            Text(
-                              '開発中(Coming soon)',
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: Colors.orange,
-                              ),
-                            ),
-                          ]
-                        ),
-                        width: 250,
-                      ),
-                      color: Colors.white,
-                    ),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(/*角の丸み*/20),
-                      ),
-                      elevation: 2,
-                      child: Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              'assets/img/pc_ochiba.png',
-                              width: 120,
-                              height: 120,
-                            ),
-                            Text("Ochiba"),
-                            Text(
-                              'チーム開発(3人)',
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: Colors.grey,
-                              ),
-                            ),
-                            Text(
-                              'ブックマークを投稿し共有するWebアプリ',
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: Colors.black,
-                              ),
-                            ),
-                            Text(
-                              '停止中',
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: Colors.red,
-                              ),
-                            ),
-                          ]
-                        ),
-                        width: 250,
-                      ),
-                      color: Colors.white,
-                    ),
-                    // Card(
-                    //   shape: RoundedRectangleBorder(
-                    //     borderRadius: BorderRadius.circular(/*角の丸み*/20),
-                    //   ),
-                    //   elevation: 2,
-                    //   child: Container(
-                    //     child: Column(
-                    //       mainAxisAlignment: MainAxisAlignment.center,
-                    //       children: [
-                    //         Text(
-                    //           'And more...',
-                    //           style: TextStyle(
-                    //             fontSize: 20,
-                    //             color: Colors.grey,
-                    //           ),
-                    //         ),
-                    //       ]
-                    //     ),
-                    //     width: 250,
-                    //   ),
-                    //   color: Colors.white,
-                    // ),
+                    CardMyProfileWidget(),
+                    CardKudosWidget(),
+                    CardOchibaWidget(),
                   ],
                   shrinkWrap: true,
                 ),
+              ): 
+              Column(
+                children: [
+                  SizedBox(height: 10,),
+                  CardMyProfileWidget(),
+                  SizedBox(height: 10,),
+                  CardKudosWidget(),
+                  SizedBox(height: 10,),
+                  CardOchibaWidget(),
+                ],
               ),
             ),
             Center(
@@ -658,15 +320,6 @@ class BodyWidget extends StatelessWidget {
             Center(
               child: Text("\n"),
             ),
-            // Center(
-            //   child: Text(
-            //     '連絡先',
-            //     style: TextStyle(
-            //       fontSize: 20,
-            //       color: Colors.black,
-            //     ),
-            //   ),
-            // ),
             Center(
               child: Text(
                 'Contact',
@@ -690,12 +343,11 @@ class BodyWidget extends StatelessWidget {
                       style: TextStyle(color: Colors.blue),
                       recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            _urlLaunchWithStringButton.launchUriWithString(
+                            widget._urlLaunchWithStringButton.launchUriWithString(
                               context,
                               "mailto:bntsm1022@gmail.com",
                             );
                           },
-
                     ),
                   ]
                 )
@@ -707,15 +359,6 @@ class BodyWidget extends StatelessWidget {
             Center(
               child: Text("\n"),
             ),
-            // Center(
-            //   child: Text(
-            //     'SNS',
-            //     style: TextStyle(
-            //       fontSize: 20,
-            //       color: Colors.black,
-            //     ),
-            //   ),
-            // ),
             Center(
               child: Text(
                 'SNS',
@@ -745,7 +388,7 @@ class BodyWidget extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      _urlLaunchWithStringButton.launchUriWithString(
+                      widget._urlLaunchWithStringButton.launchUriWithString(
                         context,
                         "https://twitter.com/kabekun_",
                       );
@@ -768,7 +411,7 @@ class BodyWidget extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      _urlLaunchWithStringButton.launchUriWithString(
+                      widget._urlLaunchWithStringButton.launchUriWithString(
                         context,
                         "https://github.com/1022yuki",
                       );
@@ -791,7 +434,7 @@ class BodyWidget extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      _urlLaunchWithStringButton.launchUriWithString(
+                      widget._urlLaunchWithStringButton.launchUriWithString(
                         context,
                         "https://www.wantedly.com/id/kabekun",
                       );
@@ -818,6 +461,436 @@ class BodyWidget extends StatelessWidget {
             )
           ],
         ),
+    );
+  }
+}
+
+class CardMlWidget extends StatelessWidget {
+  const CardMlWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 195,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(/*角の丸み*/20),
+        ),
+        elevation: 2,
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ShaderMask(
+                child: Icon(
+                  Icons.psychology,
+                  size: 100,
+                  color: Colors.white,
+                ),
+                shaderCallback: (Rect rect) {
+                  return LinearGradient(
+                    begin: FractionalOffset.bottomLeft,
+                    end: FractionalOffset.topRight,
+                    colors: [
+                      Colors.purple,
+                      Colors.deepPurple,
+                    ],
+                    stops: const [
+                      0.0,
+                      1.0,
+                    ],
+                  ).createShader(rect);
+                },
+              ),
+              Text("機械学習"),
+              Text(
+                'Machine Learning',
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.grey,
+                ),
+              ),
+            ]
+          ),
+          width: 250,
+        ),
+        color: Colors.white,
+      ),
+    );
+  }
+}
+
+class CardDevWidget extends StatelessWidget {
+  const CardDevWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 195,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(/*角の丸み*/20),
+        ),
+        elevation: 2,
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ShaderMask(
+                child: Icon(
+                  Icons.devices,
+                  size: 100,
+                  color: Colors.white,
+                ),
+                shaderCallback: (Rect rect) {
+                  return LinearGradient(
+                    begin: FractionalOffset.bottomLeft,
+                    end: FractionalOffset.topRight,
+                    colors: [
+                      Colors.purple,
+                      Colors.deepPurple,
+                    ],
+                    stops: const [
+                      0.0,
+                      1.0,
+                    ],
+                  ).createShader(rect);
+                },
+              ),
+              Text("アプリ開発(Django, FastAPI, Flutter)"),
+              Text(
+                'Development of Applications',
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.grey,
+                ),
+              ),
+            ]
+          ),
+          width: 250,
+        ),
+        color: Colors.white,
+      ),
+    );
+  }
+}
+
+class CardOchibaWidget extends StatelessWidget {
+  const CardOchibaWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 195,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(/*角の丸み*/20),
+        ),
+        elevation: 2,
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/img/pc_ochiba.png',
+                width: 120,
+                height: 120,
+              ),
+              Text("Ochiba"),
+              Text(
+                'チーム開発(3人)',
+                style: TextStyle(
+                  fontSize: 10,
+                  color: Colors.grey,
+                ),
+              ),
+              Text(
+                'ブックマークを投稿し共有するWebアプリ',
+                style: TextStyle(
+                  fontSize: 10,
+                  color: Colors.black,
+                ),
+              ),
+              Text(
+                '停止中',
+                style: TextStyle(
+                  fontSize: 10,
+                  color: Colors.red,
+                ),
+              ),
+            ]
+          ),
+          width: 250,
+        ),
+        color: Colors.white,
+      ),
+    );
+  }
+}
+
+class CardKudosWidget extends StatelessWidget {
+  const CardKudosWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 195,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(/*角の丸み*/20),
+        ),
+        elevation: 2,
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/img/sp_kudos.png',
+                width: 100,
+                height: 100,
+              ),
+              Text("Kudos"),
+              Text(
+                '個人開発',
+                style: TextStyle(
+                  fontSize: 10,
+                  color: Colors.grey,
+                ),
+              ),
+              Text(
+                'アメリカ、カナダのZ世代で爆発的に流行しているネイティブアプリGasの日本語版を開発中',
+                style: TextStyle(
+                  fontSize: 10,
+                  color: Colors.black,
+                ),
+              ),
+              Text(
+                '開発中(Coming soon)',
+                style: TextStyle(
+                  fontSize: 10,
+                  color: Colors.orange,
+                ),
+              ),
+            ]
+          ),
+          width: 250,
+        ),
+        color: Colors.white,
+      ),
+    );
+  }
+}
+
+class CardMyProfileWidget extends StatelessWidget {
+  const CardMyProfileWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 195,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(/*角の丸み*/20),
+        ),
+        elevation: 2,
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/img/pc_prof_site.png',
+                width: 120,
+                height: 120,
+              ),
+              Text("My Profile"),
+              Text(
+                '個人開発',
+                style: TextStyle(
+                  fontSize: 10,
+                  color: Colors.grey,
+                ),
+              ),
+              Text(
+                '自分について知ってもらうためのwebサイト(本サイト)',
+                style: TextStyle(
+                  fontSize: 10,
+                  color: Colors.black,
+                ),
+              ),
+              Text(
+                '公開中',
+                style: TextStyle(
+                  fontSize: 10,
+                  color: Colors.green,
+                ),
+              ),
+            ]
+          ),
+          width: 250,
+        ),
+        color: Colors.white,
+      ),
+    );
+  }
+}
+
+class CardAtCoderWidget extends StatelessWidget {
+  const CardAtCoderWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 195,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(/*角の丸み*/20),
+        ),
+        elevation: 2,
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ShaderMask(
+                child: Icon(
+                  Icons.computer,
+                  size: 100,
+                  color: Colors.white,
+                ),
+                shaderCallback: (Rect rect) {
+                  return LinearGradient(
+                    begin: FractionalOffset.bottomLeft,
+                    end: FractionalOffset.topRight,
+                    colors: [
+                      Colors.purple,
+                      Colors.deepPurple,
+                    ],
+                    stops: const [
+                      0.0,
+                      1.0,
+                    ],
+                  ).createShader(rect);
+                },
+              ),
+              Text("AtCoder緑"),
+              Text(
+                'AtCoder rating of 800 or higher',
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.grey,
+                ),
+              ),
+            ]
+          ),
+          width: 250,
+        ),
+      ),
+    );
+  }
+}
+
+class CardInternWidget extends StatelessWidget {
+  const CardInternWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 195,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(/*角の丸み*/20),
+        ),
+        elevation: 2,
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ShaderMask(
+                child: Icon(
+                  Icons.domain,
+                  size: 100,
+                  color: Colors.white,
+                ),
+                shaderCallback: (Rect rect) {
+                  return LinearGradient(
+                    begin: FractionalOffset.bottomLeft,
+                    end: FractionalOffset.topRight,
+                    colors: [
+                      Colors.purple,
+                      Colors.deepPurple,
+                    ],
+                    stops: const [
+                      0.0,
+                      1.0,
+                    ],
+                  ).createShader(rect);
+                },
+              ),
+              Text("インターン(2022年8月~)"),
+              Text(
+                'Working as a data scientist',
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.grey,
+                ),
+              ),
+            ]
+          ),
+          width: 250,
+        ),
+        color: Colors.white,
+      ),
+    );
+  }
+}
+
+class CardFeWidget extends StatelessWidget {
+  const CardFeWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(/*角の丸み*/20),
+      ),
+      elevation: 2,
+      child: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.school,
+              size: 100,
+              color: Colors.indigo,
+            ),
+            Text("基本情報技術者"),
+            Text(
+              'Fundamental Information Technology Engineer Examination',
+              style: TextStyle(
+                fontSize: 15,
+                color: Colors.grey,
+              ),
+            ),
+          ]
+        ),
+        width: 250,
+      ),
+      color: Colors.white,
     );
   }
 }
@@ -881,3 +954,20 @@ class ImageCard extends StatelessWidget {
     );
   }
 }
+
+const MaterialColor primaryBlack = MaterialColor(
+  _blackPrimaryValue,
+  <int, Color>{
+    50: Color(0xFF000000),
+    100: Color(0xFF000000),
+    200: Color(0xFF000000),
+    300: Color(0xFF000000),
+    400: Color(0xFF000000),
+    500: Color(_blackPrimaryValue),
+    600: Color(0xFF000000),
+    700: Color(0xFF000000),
+    800: Color(0xFF000000),
+    900: Color(0xFF000000),
+  },
+);
+const int _blackPrimaryValue = 0xFF000000;
