@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // A. メイン関数
@@ -75,13 +76,6 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          // actions: <Widget>[
-          //   IconButton(
-          //     icon: Icon(Icons.search),
-          //     color: Colors.black87,
-          //     onPressed: (){},
-          //   ),
-          // ],
         ),
       ), 
       body: BodyWidget(urlLaunchWithStringButton: _urlLaunchWithStringButton),
@@ -103,17 +97,21 @@ class BodyWidget extends StatefulWidget {
 }
 
 class _BodyWidgetState extends State<BodyWidget> {
-  double? _deviceWidth;
-  late bool isWide;
+  // double? _deviceWidth;
+  // late bool isWide = false;
 
   @override
   Widget build(BuildContext context) {
-    _deviceWidth = MediaQuery.of(context).size.width;
-    if (_deviceWidth! > 600){
-      isWide = true;
-    } else {
-      isWide = false;
-    }
+    // final deviceWidth = MediaQuery.of(context).size.width;
+    // if (deviceWidth > 600){
+    //   setState(() {
+    //     isWide = true;
+    //   });
+    // } else {
+    //   setState(() { 
+    //     isWide = false;
+    //   });
+    // }
     return SingleChildScrollView(
       child: 
         Column(
@@ -216,8 +214,9 @@ class _BodyWidgetState extends State<BodyWidget> {
               ),
             ),
             SizedBox(height: 10,),
+            
             Center(
-              child: isWide? SizedBox(
+              child: SizedBox(
                 height: 200,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
@@ -227,15 +226,15 @@ class _BodyWidgetState extends State<BodyWidget> {
                   ],
                   shrinkWrap: true,
                 ),
-              ):
-              Column(
-                  children: [
-                    SizedBox(height: 10),
-                    CardDevWidget(),
-                    SizedBox(height: 10),
-                    CardMlWidget(),
-                  ],
-                ),
+              ),
+              // Column(
+              //     children: [
+              //       SizedBox(height: 10),
+              //       CardDevWidget(),
+              //       SizedBox(height: 10),
+              //       CardMlWidget(),
+              //     ],
+              //   ),
             ),
             Center(
               child: Text("\n"),
@@ -254,7 +253,7 @@ class _BodyWidgetState extends State<BodyWidget> {
             ),
             SizedBox(height: 10,),
             Center(
-              child: isWide? SizedBox(
+              child: SizedBox(
                 height: 200,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
@@ -264,15 +263,15 @@ class _BodyWidgetState extends State<BodyWidget> {
                   ],
                   shrinkWrap: true,
                 ),
-              ):
-              Column(
-                children: [
-                  SizedBox(height: 10),
-                  CardInternWidget(),
-                  SizedBox(height: 10),
-                  CardAtCoderWidget(),
-                ],
               ),
+              // Column(
+              //   children: [
+              //     SizedBox(height: 10),
+              //     CardInternWidget(),
+              //     SizedBox(height: 10),
+              //     CardAtCoderWidget(),
+              //   ],
+              // ),
             ),
             Center(
               child: Text("\n"),
@@ -291,7 +290,7 @@ class _BodyWidgetState extends State<BodyWidget> {
             ),
             SizedBox(height: 10,),
             Center(
-              child: isWide? SizedBox(
+              child: SizedBox(
                 height: 200,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
@@ -302,17 +301,17 @@ class _BodyWidgetState extends State<BodyWidget> {
                   ],
                   shrinkWrap: true,
                 ),
-              ): 
-              Column(
-                children: [
-                  SizedBox(height: 10,),
-                  CardMyProfileWidget(),
-                  SizedBox(height: 10,),
-                  CardKudosWidget(),
-                  SizedBox(height: 10,),
-                  CardOchibaWidget(),
-                ],
               ),
+              // Column(
+              //   children: [
+              //     SizedBox(height: 10,),
+              //     CardMyProfileWidget(),
+              //     SizedBox(height: 10,),
+              //     CardKudosWidget(),
+              //     SizedBox(height: 10,),
+              //     CardOchibaWidget(),
+              //   ],
+              // ),
             ),
             Center(
               child: Text("\n"),
@@ -339,13 +338,13 @@ class _BodyWidgetState extends State<BodyWidget> {
                       style: TextStyle(color: Colors.black)
                     ),
                     TextSpan(
-                      text: "bntsm1022@gmail.com",
+                      text: "yuki.kabekun@gmail.com",
                       style: TextStyle(color: Colors.blue),
                       recognizer: TapGestureRecognizer()
                           ..onTap = () {
                             widget._urlLaunchWithStringButton.launchUriWithString(
                               context,
-                              "mailto:bntsm1022@gmail.com",
+                              "mailto:yuki.kabekun@gmail.com",
                             );
                           },
                     ),
