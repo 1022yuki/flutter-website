@@ -92,13 +92,17 @@ class BodyWidget extends StatefulWidget {
   final UrlLaunchWithStringButton _urlLaunchWithStringButton;
 
   @override
-  State<BodyWidget> createState() => _BodyWidgetState();
+  State<BodyWidget> createState() => _BodyWidgetState(urlLaunchWithStringButton: _urlLaunchWithStringButton);
   double? _deviceWidth;
 }
 
 class _BodyWidgetState extends State<BodyWidget> {
   // double? _deviceWidth;
   // late bool isWide = false;
+  _BodyWidgetState({
+    required UrlLaunchWithStringButton urlLaunchWithStringButton,
+  }) : _urlLaunchWithStringButton = urlLaunchWithStringButton;
+  final UrlLaunchWithStringButton _urlLaunchWithStringButton;
 
   @override
   Widget build(BuildContext context) {
@@ -297,7 +301,7 @@ class _BodyWidgetState extends State<BodyWidget> {
                   children: [
                     CardMyProfileWidget(),
                     CardKudosWidget(),
-                    CardOchibaWidget(),
+                    CardOchibaWidget(urlLaunchWithStringButton: _urlLaunchWithStringButton),
                   ],
                   shrinkWrap: true,
                 ),
@@ -581,53 +585,78 @@ class CardDevWidget extends StatelessWidget {
 class CardOchibaWidget extends StatelessWidget {
   const CardOchibaWidget({
     super.key,
-  });
+    required UrlLaunchWithStringButton urlLaunchWithStringButton,
+  }) : _urlLaunchWithStringButton = urlLaunchWithStringButton;
+
+  final UrlLaunchWithStringButton _urlLaunchWithStringButton;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 195,
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(/*角の丸み*/20),
-        ),
-        elevation: 2,
-        child: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/img/pc_ochiba.png',
-                width: 120,
-                height: 120,
-              ),
-              Text("Ochiba"),
-              Text(
-                'チーム開発(3人)',
-                style: TextStyle(
-                  fontSize: 10,
-                  color: Colors.grey,
-                ),
-              ),
-              Text(
-                'ブックマークを投稿し共有するWebアプリ',
-                style: TextStyle(
-                  fontSize: 10,
-                  color: Colors.black,
-                ),
-              ),
-              Text(
-                '停止中',
-                style: TextStyle(
-                  fontSize: 10,
-                  color: Colors.red,
-                ),
-              ),
-            ]
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        height: 195,
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(/*角の丸み*/20),
           ),
-          width: 250,
+          elevation: 2,
+          child: Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/img/pc_ochiba.png',
+                  width: 120,
+                  height: 120,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    _urlLaunchWithStringButton.launchUriWithString(
+                      context,
+                      "https://ochiba.onrender.com/",
+                    );
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Ochiba"
+                      ),
+                      Icon(
+                        Icons.open_in_new,
+                        size: 15,
+                        color: Colors.grey,)
+                    ],
+                  ),
+                ),
+                Text(
+                  'チーム開発(3人)',
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: Colors.grey,
+                  ),
+                ),
+                Text(
+                  'ブックマークを投稿し共有するWebアプリ',
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: Colors.black,
+                  ),
+                ),
+                Text(
+                  '公開中',
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: Colors.green,
+                  ),
+                ),
+              ]
+            ),
+            width: 250,
+          ),
+          color: Colors.white,
         ),
-        color: Colors.white,
       ),
     );
   }
