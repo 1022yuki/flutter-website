@@ -685,7 +685,7 @@ class CardKudosWidget extends StatelessWidget {
                 width: 100,
                 height: 100,
               ),
-              Text("Kudos"),
+              Text("Gem"),
               Text(
                 '個人開発',
                 style: TextStyle(
