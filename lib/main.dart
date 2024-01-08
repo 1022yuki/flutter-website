@@ -33,15 +33,15 @@ class PortfolioApp extends StatelessWidget {
 // C. 画面に表示する内容！
 class HomePage extends StatelessWidget {
   final _urlLaunchWithStringButton = UrlLaunchWithStringButton();
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.0),
         child: AppBar(
-          backgroundColor:Colors.black,
+          backgroundColor: Colors.black,
           elevation: .6,
           title: Align(
             alignment: Alignment.centerLeft,
@@ -106,6 +106,16 @@ class _BodyWidgetState extends State<BodyWidget> {
 
   @override
   Widget build(BuildContext context) {
+    // final deviceWidth = MediaQuery.of(context).size.width;
+    // if (deviceWidth > 600){
+    //   setState(() {
+    //     isWide = true;
+    //   });
+    // } else {
+    //   setState(() { 
+    //     isWide = false;
+    //   });
+    // }
     return SingleChildScrollView(
       child: 
         Column(
@@ -114,6 +124,7 @@ class _BodyWidgetState extends State<BodyWidget> {
               height: MediaQuery.of(context).size.height-60,
               width: double.infinity,
               alignment: Alignment.center,
+              // decoration: BoxDecoration(color: Colors.brown), // 追加
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/img/kane_ss.png'),
@@ -127,207 +138,223 @@ class _BodyWidgetState extends State<BodyWidget> {
                 ),
               ),
             ),
-            Container(
-              height: MediaQuery.of(context).size.height-60,
-              color: Color.fromARGB(255, 0, 78, 76),
-              child: Column(
-                children: [
-                  Center(
-                    child: Text(
-                      'Profile',
-                      style: TextStyle(
-                        fontSize: 60,
-                        color: Color.fromARGB(255, 236, 255, 140),
-                      ),
+            Center(
+              child: Text("\n"),
+            ),
+            Center(
+              child: Text(
+                'Profile',
+                style: TextStyle(
+                  fontSize: 40,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            SizedBox(height: 10,),
+            Center(
+              child: ClipOval(
+                child: Image.asset(
+                  'assets/img/watasi.jpg',
+                  width: 100,
+                  height: 100,
+                ),
+              ),
+            ),
+            Center(
+              child: Text(
+                'Yuki Abe',
+                style: TextStyle(
+                  fontSize: 40,
+                  color: Colors.grey,
+                ),
+              ),
+            ),
+            Center(
+              child: Text('大学生エンジニア'),
+            ),
+            Center(
+              child: Text(
+                'University student, Engineer',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.grey,
+                ),
+              ),
+            ),
+            SizedBox(height: 10,),
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal:50),
+                child: Text(
+                  '　早稲田大学基幹理工学部情報通信学科3年。プログラミングをしています。趣味は旅行、バスケットボール、競技プログラミングです。特に関心のある分野はアプリ開発、データサイエンスです。これらの勉強を通じて革新的なサービスを開発し人々の生活を豊かにしたいと考えています。さまざまなことに積極的に挑戦したいです。',
+                  style: TextStyle(
+                  fontSize: 16,
+                  // color: Colors.grey,
+                ),
+                ),
+            ),
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal:50),
+                child: Text(
+                "　I am a 3rd year student in the Department of Information and Communication, School of Fundamental Science and Engineering, Waseda University. I study Computer Science. My hobbies are traveling, basketball, and competitive programming. My particular areas of interest are app development and data science. Through these studies, I hope to develop innovative services and enrich people's lives. I want to actively challenge myself in a variety of things.",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Color.fromARGB(255, 150, 145, 145),
+                ),
+              ),
+            ),
+            Center(
+              child: Text("\n"),
+            ),
+            Center(
+              child: Text("\n"),
+            ),
+            Center(
+              child: Text(
+                'Skills',
+                style: TextStyle(
+                  fontSize: 40,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            SizedBox(height: 10,),
+            
+            Center(
+              child: SizedBox(
+                height: 200,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    CardDevWidget(),
+                    CardMlWidget(),
+                  ],
+                  shrinkWrap: true,
+                ),
+              ),
+              // Column(
+              //     children: [
+              //       SizedBox(height: 10),
+              //       CardDevWidget(),
+              //       SizedBox(height: 10),
+              //       CardMlWidget(),
+              //     ],
+              //   ),
+            ),
+            Center(
+              child: Text("\n"),
+            ),
+            Center(
+              child: Text("\n"),
+            ),
+            Center(
+              child: Text(
+                'Achievements',
+                style: TextStyle(
+                  fontSize: 40,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            SizedBox(height: 10,),
+            Center(
+              child: SizedBox(
+                height: 200,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    CardInternWidget(),
+                    CardAtCoderWidget(),
+                  ],
+                  shrinkWrap: true,
+                ),
+              ),
+              // Column(
+              //   children: [
+              //     SizedBox(height: 10),
+              //     CardInternWidget(),
+              //     SizedBox(height: 10),
+              //     CardAtCoderWidget(),
+              //   ],
+              // ),
+            ),
+            Center(
+              child: Text("\n"),
+            ),
+            Center(
+              child: Text("\n"),
+            ),
+            Center(
+              child: Text(
+                'Products',
+                style: TextStyle(
+                  fontSize: 40,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            SizedBox(height: 10,),
+            Center(
+              child: SizedBox(
+                height: 200,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    CardMyProfileWidget(),
+                    CardKudosWidget(),
+                    CardOchibaWidget(urlLaunchWithStringButton: _urlLaunchWithStringButton),
+                  ],
+                  shrinkWrap: true,
+                ),
+              ),
+              // Column(
+              //   children: [
+              //     SizedBox(height: 10,),
+              //     CardMyProfileWidget(),
+              //     SizedBox(height: 10,),
+              //     CardKudosWidget(),
+              //     SizedBox(height: 10,),
+              //     CardOchibaWidget(),
+              //   ],
+              // ),
+            ),
+            Center(
+              child: Text("\n"),
+            ),
+            Center(
+              child: Text("\n"),
+            ),
+            Center(
+              child: Text(
+                'Contact',
+                style: TextStyle(
+                  fontSize: 40,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            SizedBox(height: 10,),
+            Center(
+              child: RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "E-mail: ",
+                      style: TextStyle(color: Colors.black)
                     ),
-                  ),
-                  SizedBox(height: 10,),
-                  Center(
-                    child: ClipOval(
-                      child: Image.asset(
-                        'assets/img/watasi.jpg',
-                        width: 100,
-                        height: 100,
-                      ),
+                    TextSpan(
+                      text: "yuki.kabekun@gmail.com",
+                      style: TextStyle(color: Colors.blue),
+                      recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            widget._urlLaunchWithStringButton.launchUriWithString(
+                              context,
+                              "mailto:yuki.kabekun@gmail.com",
+                            );
+                          },
                     ),
-                  ),
-                  Center(
-                    child: Text(
-                      'Yuki Abe',
-                      style: TextStyle(
-                        fontSize: 40,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ),
-                  Center(
-                    child: Text('大学生エンジニア'),
-                  ),
-                  Center(
-                    child: Text(
-                      'University student, Engineer',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                      padding: EdgeInsets.symmetric(horizontal:50),
-                      child: Text(
-                        '　早稲田大学基幹理工学部情報通信学科3年。プログラミングをしています。趣味は旅行、バスケットボール、競技プログラミングです。特に関心のある分野はアプリ開発、データサイエンスです。これらの勉強を通じて革新的なサービスを開発し人々の生活を豊かにしたいと考えています。さまざまなことに積極的に挑戦したいです。',
-                        style: TextStyle(
-                        fontSize: 16,
-                        // color: Colors.grey,
-                      ),
-                      ),
-                  ),
-                  Padding(
-                      padding: EdgeInsets.symmetric(horizontal:50),
-                      child: Text(
-                      "　I am a 3rd year student in the Department of Information and Communication, School of Fundamental Science and Engineering, Waseda University. I study Computer Science. My hobbies are traveling, basketball, and competitive programming. My particular areas of interest are app development and data science. Through these studies, I hope to develop innovative services and enrich people's lives. I want to actively challenge myself in a variety of things.",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Color.fromARGB(255, 150, 145, 145),
-                      ),
-                    ),
-                  ),
-                ],
+                  ]
+                )
               )
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height-60,
-              color: Color.fromARGB(255, 235, 234, 221),
-              child: Column(
-                children: [
-                  Center(
-                    child: Text(
-                      'Skills',
-                      style: TextStyle(
-                        fontSize: 60,
-                        color: Color.fromARGB(255, 18, 53, 2),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10,),
-                  Center(
-                    child: SizedBox(
-                      height: 200,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          CardDevWidget(),
-                          CardMlWidget(),
-                        ],
-                        shrinkWrap: true,
-                      ),
-                    ),
-                  ),
-                ],
-              )
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height-60,
-              color: Color.fromARGB(255, 224, 233, 251),
-              child: Column(
-                children: [
-                  Center(
-                    child: Text(
-                      'Achievements',
-                      style: TextStyle(
-                        fontSize: 60,
-                        color: Color.fromARGB(255, 26, 29, 136),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10,),
-                  Center(
-                    child: SizedBox(
-                      height: 200,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          CardInternWidget(),
-                          CardAtCoderWidget(),
-                        ],
-                        shrinkWrap: true,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height-60,
-              color: Color.fromARGB(255, 133, 13, 133),
-              child: Column(
-                children: [
-                  Center(
-                    child: Text(
-                      'Products',
-                      style: TextStyle(
-                        fontSize: 60,
-                        color: Color.fromARGB(255, 215, 242, 245),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10,),
-                  Center(
-                    child: SizedBox(
-                      height: 200,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          CardMyProfileWidget(),
-                          CardKudosWidget(),
-                          CardOchibaWidget(urlLaunchWithStringButton: _urlLaunchWithStringButton),
-                        ],
-                        shrinkWrap: true,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height-60,
-              color: Color.fromARGB(255, 97, 109, 28),
-              child: Column(
-                children: [
-                  Center(
-                    child: Text(
-                      'Contact',
-                      style: TextStyle(
-                        fontSize: 60,
-                        color: Color.fromARGB(255, 255, 227, 247),
-                      ),
-                    ),
-                  ),
-                  Center(
-                    child: RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: "E-mail: ",
-                            style: TextStyle(color: Colors.black)
-                          ),
-                          TextSpan(
-                            text: "yuki.kabekun@gmail.com",
-                            style: TextStyle(color: Colors.blue),
-                            recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  widget._urlLaunchWithStringButton.launchUriWithString(
-                                    context,
-                                    "mailto:yuki.kabekun@gmail.com",
-                                  );
-                                },
-                          ),
-                        ]
-                      )
-                    )
-                  ),
-                ],
-              ),
             ),
             Center(
               child: Text("\n"),
