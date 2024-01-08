@@ -564,7 +564,7 @@ class CardDevWidget extends StatelessWidget {
                   ).createShader(rect);
                 },
               ),
-              Text("アプリ開発(Django, FastAPI, Flutter)"),
+              Text("アプリ開発(Python, Go, Ruby, Dart, etc.)"),
               Text(
                 'Development of Applications',
                 style: TextStyle(
@@ -811,9 +811,9 @@ class CardAtCoderWidget extends StatelessWidget {
                   ).createShader(rect);
                 },
               ),
-              Text("AtCoder緑"),
+              Text("AtCoder水色"),
               Text(
-                'AtCoder rating of 800 or higher',
+                'AtCoder rating of 1200 or higher',
                 style: TextStyle(
                   fontSize: 15,
                   color: Colors.grey,
@@ -869,7 +869,7 @@ class CardInternWidget extends StatelessWidget {
               ),
               Text("インターン(2022年8月~)"),
               Text(
-                'Working as a data scientist',
+                'Work as a software engineer or data scientist',
                 style: TextStyle(
                   fontSize: 15,
                   color: Colors.grey,
