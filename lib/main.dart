@@ -185,7 +185,7 @@ class _BodyWidgetState extends State<BodyWidget> {
             Padding(
                 padding: EdgeInsets.symmetric(horizontal:50),
                 child: Text(
-                  '　早稲田大学基幹理工学部情報通信学科3年。プログラミングをしています。趣味は旅行、バスケットボール、競技プログラミングです。特に関心のある分野はアプリ開発、データサイエンスです。これらの勉強を通じて革新的なサービスを開発し人々の生活を豊かにしたいと考えています。さまざまなことに積極的に挑戦したいです。',
+                  '　早稲田大学でコンピュータサイエンスを学んでいます。趣味は旅行、バスケットボール、競技プログラミングです。特に関心のある分野はアプリ開発、データサイエンスです。これらの勉強を通じて革新的なサービスを開発し人々の生活を豊かにしたいと考えています。さまざまなことに積極的に挑戦したいです。',
                   style: TextStyle(
                   fontSize: 16,
                   // color: Colors.grey,
@@ -195,7 +195,7 @@ class _BodyWidgetState extends State<BodyWidget> {
             Padding(
                 padding: EdgeInsets.symmetric(horizontal:50),
                 child: Text(
-                "　I am a 3rd year student in the Department of Information and Communication, School of Fundamental Science and Engineering, Waseda University. I study Computer Science. My hobbies are traveling, basketball, and competitive programming. My particular areas of interest are app development and data science. Through these studies, I hope to develop innovative services and enrich people's lives. I want to actively challenge myself in a variety of things.",
+                  '　I am studying computer science at Waseda University. My hobbies are traveling, basketball, and competitive programming. I am particularly interested in application development and data science. Through these studies, I want to develop innovative services and enrich people\'s lives. I want to actively challenge various things.',
                 style: TextStyle(
                   fontSize: 16,
                   color: Color.fromARGB(255, 150, 145, 145),
